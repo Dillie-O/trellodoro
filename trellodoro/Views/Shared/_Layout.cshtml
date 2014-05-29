@@ -14,15 +14,47 @@
     @RenderSection("head", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @RenderBody()
+	<body>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/foundation")
-    <script>
-        $(document).foundation();
-    </script>
-    @*Use the Scripts section to define page specific scripts*@
-    @RenderSection("scripts", required: false)
-</body>
+		<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+				<li class="name">
+					<h1>@Html.ActionLink("Home", "Index")</h1>
+				</li>
+
+				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			</ul>
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+						 <li data-reveal-id="clock-modal">
+							 <a>Launch Timer</a>
+						 </li>
+
+						 <li class="has-dropdown">
+							  <a href="#">Configure</a>
+							  <ul class="dropdown">
+									<li>@Html.ActionLink("Trello", "ConnectTrello")</li>
+							  </ul>
+						 </li>
+				</ul>
+
+				<!-- Left Nav Section -->
+				<ul class="left">
+					<li></li>
+				</ul>
+			</section>
+		</nav>    
+
+		@RenderBody()
+
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/foundation")
+		<script>
+			$(document).foundation();
+		</script>
+		@*Use the Scripts section to define page specific scripts*@
+		@RenderSection("scripts", required: false)
+	</body>
 </html>

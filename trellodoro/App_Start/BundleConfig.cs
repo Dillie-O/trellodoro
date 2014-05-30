@@ -26,6 +26,14 @@ namespace trellodoro
             bundles.Add(Foundation.Scripts());
 
             #endregion
+
+			   bundles.Add(new ScriptBundle("~/bundles/trellodoro").Include(
+								"~/Scripts/moment*",
+								"~/Scripts/functions.js",
+								"~/Scripts/app.js"));
+
+				bundles.Add(new StyleBundle("~/bundles/trellodoro").Include(
+								 "~/Content/app.css"));
         }
     }
 }

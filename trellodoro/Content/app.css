@@ -1,0 +1,74 @@
+﻿/* Overrides for various elements. */
+
+body, html
+{
+	height: 100%;
+}
+
+form
+{
+    margin: 0px 0px 0rem !important;
+}
+
+a.button:visited { color: #fff !important;}
+
+thead tr th
+{
+	text-align: center;
+}
+
+.full-background
+{
+	background-size: 100% 100% !important;
+	background-repeat: no-repeat !important;
+	/*height: 100% !important;*/
+	/*top: 0px !important;*/
+	/*left: 0px !important;*/
+	/*margin: 0px 0px 0px 0px !important;*/
+}
+
+.close-full-modal
+{
+	position: fixed !important;
+	top: 5px !important;
+	right: 5px !important;
+}
+
+#clock-display-wrapper
+{
+	position: relative;
+}
+
+#clock-display
+{
+	font-size: 20em;
+	font-weight: bold;
+	background-color: #FFFFFF;
+	opacity: .7;
+	line-height: 1.2;
+}
+
+#clock-display-mobile
+{
+	background-color: #FFFFFF;
+	opacity:  .7;
+}
+
+.logo
+{
+	position: fixed !important;
+	bottom: 0px;
+	left: 0px;
+}
+
+#footer
+{
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    line-height: 50px;
+    color: #aaa;
+    text-align: center;
+    width: 100%;
+}

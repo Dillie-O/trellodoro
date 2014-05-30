@@ -1,9 +1,76 @@
 ﻿<form class="custom">
 	<div class="row">
-		<div class="small-12 columns centered">
+		<div class="small-12 columns small-centered">
 			<fieldset>
-				<legend>Select Trello Card</legend>
-				[SELECT]				
+				<legend>Trello Card</legend>
+				
+				[SELECT]
+			</fieldset>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+			<fieldset>
+				<legend>Configure Pomodoro Time</legend>
+				
+				<div class="small-4 columns">
+					<fieldset>
+						<legend>Hours</legend>
+						<input id="input-hours" type="tel" placeholder="0" />
+					</fieldset>
+				</div>
+
+				<div class="small-4 columns">
+					<fieldset>
+						<legend>Minutes</legend>
+						<input id="input-minutes" type="tel" placeholder="25" />
+					</fieldset>
+				</div>
+
+				<div class="small-4 columns">
+					<fieldset>
+						<legend>Seconds</legend>
+						<input id="input-seconds" type="tel" placeholder="0" />
+					</fieldset>
+				</div>
+			</fieldset>
+		</div>		
+	</div>	
+
+	<div class="row">
+		<div class="small-12 columns small-centered">
+			<fieldset>
+				<legend>Alert Intervals (Enter blank time to disable)</legend>
+
+				<table id="alert-times">
+					<thead>
+						<tr>
+							<th>Minutes</th>
+							<th>Sound</th>
+							<th>Minutes</th>
+							<th>Sound</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td><input class="alert-minute" type="tel" value="20" /></td>
+							<td>{{ Form::select('alert_minute_20', $data['alerts'], 2) }}</td>
+
+							<td><input class="alert-minute" type="tel" value="10" /></td>
+							<td>{{ Form::select('alert_minute_10', $data['alerts'], 2) }}</td>
+						</tr>
+
+						<tr>
+							<td><input class="alert-minute" type="tel" value="5" /></td>
+							<td>{{ Form::select('alert_minute_5', $data['alerts'], 2) }}</td>
+
+							<td><input class="alert-minute" type="tel" value="1" /></td>
+							<td>{{ Form::select('alert_minute_1', $data['alerts'], 2) }}</td>
+						</tr>
+					</tbody>
+				</table>
 			</fieldset>
 		</div>
 	</div>
@@ -15,7 +82,7 @@
 		</div>
 
 		<div id="footer">
-            <div class="small-6 small-centered columns">
+			<div class="small-6 small-centered columns">
 				<ul class="button-group even-2">
 					<li><a id="button-start" class="radius button">Start</a></li>
 					<li><a id="button-pause" class="radius button">Pause</a></li>
@@ -25,11 +92,11 @@
 			</div>
 		</div>
 
-        <a class="close-reveal-modal" style="z-index: 999;">&#215;</a>
+		<a class="close-reveal-modal" style="z-index: 999;">&#215;</a>
 		<img src="img/logo.png" class="logo hide-for-medium-down" alt="Game On Logo" />
 		<img src="img/logo-mobile.png" class="logo hide-for-large-up" alt="Game On Logo" />
 	</div>
-	
-	[LOOP TO ADD AUDIO]
-   @*<audio id="sound-alert-{{ $alert->id }}" data-filename="{{ $alert->file_name }}" src="audios/{{ $alert->file_name }}"></audio>*@
+
+	[AUDIO LOOP]
+	@*<audio id="sound-alert-{{ $alert->id }}" data-filename="{{ $alert->file_name }}" src="audios/{{ $alert->file_name }}"></audio>*@
 </form>

@@ -8,8 +8,7 @@ namespace trellodoro
         {
             return new StyleBundle("~/Content/foundation/css").Include(
                        "~/Content/foundation/foundation.css",
-                       "~/Content/foundation/foundation.mvc.css",
-                       "~/Content/foundation/app.css");
+                       "~/Content/foundation/foundation.mvc.css");
         }
 
         public static Bundle Scripts()
@@ -18,8 +17,7 @@ namespace trellodoro
                       "~/Scripts/foundation/fastclick.js",
                       "~/Scripts/jquery.cookie.js",
                       "~/Scripts/foundation/foundation.js",
-                      "~/Scripts/foundation/foundation.*",
-                      "~/Scripts/foundation/app.js");
+                      "~/Scripts/foundation/foundation.*");
         }
     }
 }

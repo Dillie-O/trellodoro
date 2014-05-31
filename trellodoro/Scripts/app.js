@@ -1,7 +1,6 @@
 ﻿var timeRemaining;
 var timerId;
 var currentBackground;
-var rotateMinutes;
 var alertTimes;
 
 function DoTick() {
@@ -15,11 +14,6 @@ function DoTick() {
                   padding_left(timeRemaining.seconds() + '', '0', 2);
 
 	SetDisplayText(timeLeft);
-
-	// Rotate image if we're at the proper interval. Ignore for first tick.
-	if (timeRemaining.minutes() % rotateMinutes == 0 && timeRemaining.seconds() == 0) {
-		RotateBackground();
-	}
 
 	// Check to see if an alert sound needs to be made. Check is made when there
 	// is less than an hour left.
@@ -45,29 +39,6 @@ function DoTick() {
 	}
 }
 
-function RotateBackground() {
-	var timerBox = $('#clock-modal');
-	var collectionId = $('#group_folder_name').val();
-	var images = backgrounds[collectionId];
-	var randomBackground = 'url(assets/logo.png)';
-
-	if (images.length == 1) {
-		randomBackground = 'url(' + images[0] + ')';
-	}
-	else if (images.length > 1) {
-		randomBackground = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
-
-		// Make sure new random background isn't the same as the current
-		while (randomBackground == currentBackground) {
-			randomBackground = 'url(' + images[Math.floor(Math.random() * images.length)] + ')';
-		}
-	}
-
-	currentBackground = randomBackground;
-	timerBox.css('background-color', '');
-	timerBox.css('background-image', randomBackground);
-}
-
 function SetDisplayText(message) {
 	var timerDisplay = $('#clock-display');
 	var mobileTimerDisplay = $('#clock-display-mobile');
@@ -76,9 +47,8 @@ function SetDisplayText(message) {
 	mobileTimerDisplay.text(message);
 }
 
-function StartTimer() {
-	var timerBox = $('#clock-modal');
-
+function StartTimer()
+{
 	ToggleButton('start', false);
 	ToggleButton('resume', false);
 	ToggleButton('pause', true);
@@ -115,31 +85,31 @@ function ResumeTimer() {
 	ToggleButton('reset', true);
 }
 
-function ResetTimer() {
-	var timerBox = $('#clock-modal');
-
+function ResetTimer()
+{
 	ToggleButton('resume', false);
 	ToggleButton('pause', false);
 	ToggleButton('start', true);
 	ToggleButton('reset', true);
 
-	RotateBackground();
 	SetDisplayText('Ready');
 
 	// Retrieve alert values and configure hash
 	alertTimes = [];
 
-	$.each($('#alert-times > tbody > tr'), function (index, value) {
+	$.each($('#alert-times > tbody > tr'), function (index, value)
+	{
 		var time = $(value).find('input').val() + '';
 		var sound = $(value).find('select').val();
 
-		if (time != '') {
+		if (time != '')
+		{
 			alertTimes.push({ time: time, soundId: sound });
 		}
 	});
 
 	window.clearTimeout(timerId);
-	rotateMinutes = $('#input-rotate-minutes').val() != '' ? $('#input-rotate-minutes').val() : $('#input-rotate-minutes').attr('placeholder'),
+
    timeRemaining = moment.duration({
    	seconds: $('#input-seconds').val() != '' ? $('#input-seconds').val() : $('#input-seconds').attr('placeholder'),
    	minutes: $('#input-minutes').val() != '' ? $('#input-minutes').val() : $('#input-minutes').attr('placeholder'),

@@ -99,6 +99,7 @@
 	.click(function () {
 		Trello.authorize({
 			type: "popup",
+			name: "Trellodoro",
 			success: onAuthorize,
 			scope: { write: true, read: true }
 		})

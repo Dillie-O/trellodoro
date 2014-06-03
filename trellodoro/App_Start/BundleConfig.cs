@@ -19,13 +19,9 @@ namespace trellodoro
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            #region Foundation Bundles
-
             bundles.Add(Foundation.Styles());
 
             bundles.Add(Foundation.Scripts());
-
-            #endregion
 
 			   bundles.Add(new ScriptBundle("~/bundles/scripts/trellodoro").Include(
 								"~/Scripts/moment*",

@@ -4,7 +4,18 @@
 			<fieldset>
 				<legend>Trello Card</legend>
 				
-				[SELECT]
+				<div id="loggedout">
+					<a id="connectLink" href="#" class="button radius">Connect To Trello</a>
+				</div>
+
+				<div id="loggedin">
+					<div id="header">
+						Logged in to as <span id="fullName"></span> 
+						<a id="disconnect" href="#">Log Out</a>
+					</div>
+    
+					<div id="output"></div>
+				</div> 				
 			</fieldset>
 		</div>
 	</div>
@@ -92,3 +103,8 @@
 	[AUDIO LOOP]
 	@*<audio id="sound-alert-{{ $alert->id }}" data-filename="{{ $alert->file_name }}" src="audios/{{ $alert->file_name }}"></audio>*@
 </form>
+
+@section scripts
+{
+   <script type="text/javascript" src="/Scripts/home.js"></script>
+}

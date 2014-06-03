@@ -68,7 +68,7 @@
 						.text(card.name)
 						.appendTo($cards)
 						.click(function() {
-							Trello.post("cards/" + card.id + "/actions/comments", { text: "Hello from jsfiddle.net!" });
+							Trello.post("cards/" + card.id + "/actions/stickers", { id: 1 });
 						});
 				});
 			});

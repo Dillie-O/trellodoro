@@ -55,19 +55,11 @@
 
 					<tbody>
 						<tr>
-							<td><input class="alert-minute" type="tel" value="20" /></td>
+							<td><input class="alert-minute" type="tel" value="10" /></td>
 							<td>{{ Form::select('alert_minute_20', $data['alerts'], 2) }}</td>
 
-							<td><input class="alert-minute" type="tel" value="10" /></td>
-							<td>{{ Form::select('alert_minute_10', $data['alerts'], 2) }}</td>
-						</tr>
-
-						<tr>
-							<td><input class="alert-minute" type="tel" value="5" /></td>
-							<td>{{ Form::select('alert_minute_5', $data['alerts'], 2) }}</td>
-
 							<td><input class="alert-minute" type="tel" value="1" /></td>
-							<td>{{ Form::select('alert_minute_1', $data['alerts'], 2) }}</td>
+							<td>{{ Form::select('alert_minute_10', $data['alerts'], 2) }}</td>
 						</tr>
 					</tbody>
 				</table>

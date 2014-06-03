@@ -10,6 +10,7 @@ namespace trellodoro.Controllers
 	{
 		public ActionResult Index()
 		{
+			ViewBag.Title = "Home";
 			return View();
 		}
 

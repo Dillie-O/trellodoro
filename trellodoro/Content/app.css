@@ -22,7 +22,6 @@ thead tr th
 	background-size: 100% 100% !important;
 	background-repeat: no-repeat !important;
 	background-image: url('/Content/img/tomato_background.jpg');
-	background-size: contain;
 }
 
 .close-full-modal

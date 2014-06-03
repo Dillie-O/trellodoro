@@ -69,6 +69,9 @@
 						.appendTo($cards)
 						.click(function () {
 							var testStickers = Trello.get("cards/" + card.id + "/stickers");
+							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
+								alert(stickers);
+							});
 							Trello.post("cards/" + card.id + "/actions/comments", { text: "Hello from Trellodoro!" });
 						});
 				});

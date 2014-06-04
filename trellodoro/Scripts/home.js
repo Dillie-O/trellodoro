@@ -56,13 +56,14 @@
 		Trello.members.get("me", function (member) {
 			$("#fullName").text(member.fullName);
 
-			// Build a list of all of the cards that the member is assigned to.
+			var $cards = $("<div>")
+				 .text("Loading Cards...")
+				 .appendTo("#output");
+
 			Trello.get("members/me/cards", function (cards) {
 				$cards.empty();
-				$("<div>").text("Click a card to add a sticker to it").appendTo($cards);
 				
 				// Build select list with card details.
-
 				$.each(cards, function (ix, card) {
 					$('#cardSelect').append('<option value="' + card.id + '">' + card.name + '</option>');
 

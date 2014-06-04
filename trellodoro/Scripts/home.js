@@ -68,6 +68,15 @@
 						.text(card.name)
 						.appendTo($cards)
 						.click(function () {
+							$.ajax({
+								type: "PUT",
+								url: "htpp://api.trello.com/1/cards/" + card.id + "/stickers/1",
+								contentType: "application/json",
+								data: {
+									"key": "ac00ed75ef9944a76a8dcfc81936a6eb",
+									"token": ""
+								}
+							});
 							var testStickers = Trello.get("cards/" + card.id + "/stickers");
 							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
 								alert(stickers);
@@ -102,7 +111,7 @@
 			name: "Trellodoro",
 			success: onAuthorize,
 			scope: { write: true, read: true }
-		})
+		});
 	});
 
 	$("#disconnect").click(logout);

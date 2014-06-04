@@ -2,19 +2,16 @@
 	<div class="row">
 		<div class="small-12 columns small-centered">
 			<fieldset>
-				<legend>Trello</legend>
+				<legend id="trelloLegend">Trello</legend>
 				
 				<div id="loggedout">
-					<a id="connectTrello" href="#" class="button radius">Connect To Trello</a>
+					<a id="connectTrelloButton" href="#" class="button radius">Connect To Trello</a>
 				</div>
 
 				<div id="loggedin" style="display: none;">
-					<div id="header">
-						Logged in to as <span id="fullName"></span> 						
-					</div>
-					
+										
 					<label>Select A Card
-					  <select id="cardSelect"></select>
+						<select id="cardSelect"></select>
 					</label>
     
 					<div id="output"></div>
@@ -60,6 +57,10 @@
 
 		<div id="footer">
 			<div class="small-9 small-centered columns">
+				<div id="clock-display-mobile">Current Card: <span id="currentCard">This</span>
+
+				</div>
+
 				<ul class="button-group even-3">
 					<li><a id="button-start" class="radius button">Start</a></li>
 					<li><a id="button-pause" class="radius button">Pause</a></li>
@@ -75,7 +76,7 @@
 		<img src="~/Content/img/TomatoIcon.png" width="32" class="logo hide-for-large-up" alt="Trellodoro Logo" />
 	</div>
 
-	<audio id="sound-ring}" data-filename="ring.wav" src="/Content/audios/ring.wav"></audio>
+	<audio id="sound-ring" data-filename="ring.wav" src="/Content/audio/ring.wav"></audio>
 </form>
 
 @section scripts

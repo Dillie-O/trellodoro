@@ -54,7 +54,7 @@
 		$("#output").empty();
 
 		Trello.members.get("me", function (member) {
-			$("#fullName").text(member.fullName);
+			$('#trelloLegend').text("Trello (Logged in as " + member.fullName + ")");
 
 			var $cards = $("<div>")
 				 .text("Loading Cards...")
@@ -62,6 +62,7 @@
 
 			Trello.get("members/me/cards", function (cards) {
 				$cards.empty();
+				$('#cardSelect').empty();
 				
 				// Build select list with card details.
 				$.each(cards, function (ix, card) {
@@ -74,12 +75,15 @@
 	var updateLoggedIn = function () {
 		var isLoggedIn = Trello.authorized();
 		$("#loggedout").toggle(!isLoggedIn);
+		$("#connectLink").toggle(!isLoggedIn);
 		$("#loggedin").toggle(isLoggedIn);
+		$("#disconnectLink").toggle(isLoggedIn);
 	};
 
 	var logout = function () {
 		Trello.deauthorize();
 		updateLoggedIn();
+		$('#trelloLegend').text("Trello");
 	};
 
 	Trello.authorize({
@@ -87,8 +91,16 @@
 		success: onAuthorize
 	});
 
-	$("#connectTrello")
-	.click(function () {
+	$("#connectTrello").click(function () {
+		Trello.authorize({
+			type: "popup",
+			name: "Trellodoro",
+			success: onAuthorize,
+			scope: { write: true, read: true }
+		});
+	});
+	
+	$("#connectTrelloButton").click(function () {
 		Trello.authorize({
 			type: "popup",
 			name: "Trellodoro",

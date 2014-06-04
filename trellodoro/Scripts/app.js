@@ -15,22 +15,11 @@ function DoTick() {
 
 	SetDisplayText(timeLeft);
 
-	// Check to see if an alert sound needs to be made. Check is made when there
-	// is less than an hour left.
-	if (timeRemaining.hours() == 0 && timeRemaining.seconds() == 0) {
-		var alertCheck = $.grep(alertTimes, function (e) { return e.time == timeRemaining.minutes(); });
-
-		if (alertCheck.length > 0) {
-			var soundId = alertCheck[0].soundId;
-			$('#sound-alert-' + soundId)[0].play();
-		}
-	}
-
+	// Check to see if time up sound needs to be made. 
 	if (timeRemaining.hours() == 0 && timeRemaining.minutes() == 0 && timeRemaining.seconds() == 0) {
 		window.clearTimeout(timerId);
 
-		var soundId = $('#select-expired-id').val();
-		$('#sound-alert-' + soundId)[0].play();
+		$('#sound-ring')[0].play();
 
 		SetDisplayText('Time!');
 
@@ -59,7 +48,7 @@ function StartTimer()
 	window.clearTimeout(timerId);
 	timeRemaining = moment.duration({
 		seconds: $('#input-seconds').val() != '' ? $('#input-seconds').val() : 0,
-		minutes: $('#input-minutes').val() != '' ? $('#input-minutes').val() : 30,
+		minutes: $('#input-minutes').val() != '' ? $('#input-minutes').val() : 25,
 		hours: $('#input-hours').val() != '' ? $('#input-hours').val() : 0
 	});
 
@@ -92,21 +81,7 @@ function ResetTimer()
 	ToggleButton('start', true);
 	ToggleButton('reset', true);
 
-	SetDisplayText('Ready');
-
-	// Retrieve alert values and configure hash
-	alertTimes = [];
-
-	$.each($('#alert-times > tbody > tr'), function (index, value)
-	{
-		var time = $(value).find('input').val() + '';
-		var sound = $(value).find('select').val();
-
-		if (time != '')
-		{
-			alertTimes.push({ time: time, soundId: sound });
-		}
-	});
+	SetDisplayText('Ready');	
 
 	window.clearTimeout(timerId);
 

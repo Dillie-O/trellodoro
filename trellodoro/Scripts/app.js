@@ -34,6 +34,7 @@ function SetDisplayText(message) {
 
 	timerDisplay.text(message);
 	mobileTimerDisplay.text(message);
+	document.title = message + " - Trellodoro";
 }
 
 function StartTimer()

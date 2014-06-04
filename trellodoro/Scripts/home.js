@@ -87,7 +87,7 @@
 		success: onAuthorize
 	});
 
-	$("#connectLink")
+	$("#connectTrello")
 	.click(function () {
 		Trello.authorize({
 			type: "popup",
@@ -97,7 +97,7 @@
 		});
 	});
 
-	$("#disconnect").click(logout);
+	$("#disconnectTrello").click(logout);
 	
 	function AddSticker(cardId)
 	{

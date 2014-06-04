@@ -127,8 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.css" />
-    <Content Include="Content\audio\ahooga.wav" />
-    <Content Include="Content\audio\buzzer.wav" />
+    <Content Include="Content\audio\ring.wav" />
+    <Content Include="Content\audio\ringBreak.wav" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\foundation\foundation.css" />

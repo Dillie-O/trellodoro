@@ -2,20 +2,25 @@
 	<div class="row">
 		<div class="small-12 columns small-centered">
 			<fieldset>
-				<legend id="trelloLegend">Trello</legend>
-				
-				<div id="loggedout">
-					<a id="connectTrelloButton" href="#" class="button radius">Connect To Trello</a>
-				</div>
+				<legend id="trelloLegend">Trello</legend>				
+				<div class="small-6 columns">
+					<div id="loggedout">
+						<a id="connectTrelloButton" href="#" class="button radius">Connect To Trello</a>
+					</div>
 
-				<div id="loggedin" style="display: none;">
+					<div id="loggedin" style="display: none;">
 										
-					<label>Select A Card
-						<select id="cardSelect"></select>
-					</label>
+						<label>Select A Card
+							<select id="cardSelect"></select>
+						</label>
     
-					<div id="output"></div>
-				</div> 				
+						<div id="output"></div>
+					</div>
+				</div>
+				
+				<div class="small-6 columns">
+					<a class="button radius" data-reveal-id="clock-modal">Launch Timer</a>
+				</div>
 			</fieldset>
 		</div>
 	</div>

@@ -44,6 +44,10 @@
 		ResetTimer();
 	});
 	
+	$('#button-pomodoro').bind('click', function () {
+		AddSticker($("#cardSelect").val());
+	});
+	
 	// Wire up Trello functionality
 	var onAuthorize = function () {
 		updateLoggedIn();
@@ -61,8 +65,12 @@
 			Trello.get("members/me/cards", function (cards) {
 				$cards.empty();
 				$("<div>").text("Click a card to add a sticker to it").appendTo($cards);
+				
+				// Build select list with card details.
 
 				$.each(cards, function (ix, card) {
+					$('#cardSelect').append('<option value="' + card.id + '">' + card.name + '</option>');
+
 					$("<a>")
 						.addClass("card")
 						.text(card.name)
@@ -109,4 +117,15 @@
 	});
 
 	$("#disconnect").click(logout);
+	
+	function AddSticker(cardId)
+	{
+		// Offset stickers by 20 pixels to properly see amount.							
+		Trello.get("cards/" + cardId + "/stickers", function (stickers) {
+			var stickerCount = stickers.length;
+			var stickerOffSet = 20 * stickerCount;
+
+			Trello.post("cards/" + cardId + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
+		});
+	}
 });

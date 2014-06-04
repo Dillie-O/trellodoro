@@ -74,7 +74,7 @@
 								contentType: "application/json",
 								data: {
 									"key": "ac00ed75ef9944a76a8dcfc81936a6eb",
-									"token": ""
+									"token": Trello.token()
 								}
 							});
 							var testStickers = Trello.get("cards/" + card.id + "/stickers");

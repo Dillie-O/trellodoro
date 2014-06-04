@@ -70,7 +70,7 @@
 						.click(function () {
 							$.ajax({
 								type: "PUT",
-								url: "htpp://api.trello.com/1/cards/" + card.id + "/stickers/1",
+								url: "http://api.trello.com/1/cards/" + card.id + "/stickers/1",
 								contentType: "application/json",
 								data: {
 									"key": "ac00ed75ef9944a76a8dcfc81936a6eb",

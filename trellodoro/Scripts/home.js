@@ -69,16 +69,13 @@
 						.appendTo($cards)
 						.click(function ()
 						{
-							// Offset stickers by 20 pixels to properly see amount.
-							var stickerCount = 0;
+							// Offset stickers by 20 pixels to properly see amount.							
 							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
-								stickerCount = stickers.length;
-								alert("Length: " + stickers.length);
-							});
-
-							alert("Count: " + stickerCount);
-							var stickerOffSet = 20 * stickerCount;
-							Trello.post("cards/" + card.id + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
+								var stickerCount = stickers.length;
+								var stickerOffSet = 20 * stickerCount;
+								
+								Trello.post("cards/" + card.id + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
+							});							
 						});
 				});
 			});

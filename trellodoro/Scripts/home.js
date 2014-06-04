@@ -68,20 +68,8 @@
 						.text(card.name)
 						.appendTo($cards)
 						.click(function () {
-							$.ajax({
-								type: "PUT",
-								url: "http://api.trello.com/1/cards/" + card.id + "/stickers/1",
-								contentType: "application/json",
-								data: {
-									"key": "ac00ed75ef9944a76a8dcfc81936a6eb",
-									"token": Trello.token()
-								}
-							});
 							var testStickers = Trello.get("cards/" + card.id + "/stickers");
-							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
-								alert(stickers);
-							});
-							Trello.post("cards/" + card.id + "/actions/comments", { text: "Hello from Trellodoro!" });
+							Trello.post("cards/" + card.id + "/stickers", { image: "clock", top: 0, left: 50, zIndex: 1 });
 						});
 				});
 			});

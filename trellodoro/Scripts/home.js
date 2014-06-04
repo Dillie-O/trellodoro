@@ -73,9 +73,10 @@
 							var stickerCount = 0;
 							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
 								stickerCount = stickers.length;
-								alert(stickers.length);
+								alert("Length: " + stickers.length);
 							});
-							
+
+							alert("Count: " + stickerCount);
 							var stickerOffSet = 20 * stickerCount;
 							Trello.post("cards/" + card.id + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
 						});

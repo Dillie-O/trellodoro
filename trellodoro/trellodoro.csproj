@@ -136,6 +136,7 @@
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="Content\img\logo-mobile.png" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\TomatoIcon.png" />
     <Content Include="Content\img\tomato_background.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

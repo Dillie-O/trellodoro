@@ -66,21 +66,6 @@
 				// Build select list with card details.
 				$.each(cards, function (ix, card) {
 					$('#cardSelect').append('<option value="' + card.id + '">' + card.name + '</option>');
-
-					$("<a>")
-						.addClass("card")
-						.text(card.name)
-						.appendTo($cards)
-						.click(function ()
-						{
-							// Offset stickers by 20 pixels to properly see amount.							
-							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
-								var stickerCount = stickers.length;
-								var stickerOffSet = 20 * stickerCount;
-								
-								Trello.post("cards/" + card.id + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
-							});							
-						});
 				});
 			});
 		});

@@ -72,7 +72,8 @@
 							// Offset stickers by 20 pixels to properly see amount.
 							var stickerCount = 0;
 							Trello.get("cards/" + card.id + "/stickers", function(stickers) {
-								 stickerCount = stickers.length;
+								stickerCount = stickers.length;
+								alert(stickers.length);
 							});
 							
 							var stickerOffSet = 20 * stickerCount;

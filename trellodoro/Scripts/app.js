@@ -2,6 +2,7 @@
 var timerId;
 var currentBackground;
 var alertTimes;
+var isBreak;
 
 function DoTick() {
 	var timerBox = $('#clock-modal');
@@ -25,6 +26,12 @@ function DoTick() {
 
 		timerBox.css('background-image', '');
 		timerBox.css('background-color', 'red');
+
+		// After pomodoro completes, immediately start up a break, but only once.
+		if (!isBreak) {
+			isBreak = true;
+			StartBreakTimer();			
+		}		
 	}
 }
 
@@ -54,6 +61,7 @@ function StartTimer()
 	});
 
 	// Start the clock!
+	isBreak = false;
 	timerId = setInterval(function () { DoTick(); }, 1000);
 }
 
@@ -91,4 +99,25 @@ function ResetTimer()
    	minutes: $('#input-minutes').val() != '' ? $('#input-minutes').val() : $('#input-minutes').attr('placeholder'),
    	hours: $('#input-hours').val() != '' ? $('#input-hours').val() : $('#input-hours').attr('placeholder')
    });
+}
+
+function StartBreakTimer() {
+	ToggleButton('resume', false);
+	ToggleButton('start', false);
+	ToggleButton('pause', true);
+	ToggleButton('reset', true);
+
+	SetDisplayText('Break');
+
+	window.clearTimeout(timerId);
+
+	timeRemaining = moment.duration({
+		seconds: 5,
+		minutes: 0,
+		hours: 0
+	});
+
+	// Start the clock!
+	isBreak = true;
+	timerId = setInterval(function () { DoTick(); }, 1000);
 }

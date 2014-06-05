@@ -55,15 +55,20 @@
 	</div>		
 
 	<div id="clock-modal" class="reveal-modal full full-background" data-reveal>
+		<div id="status-box" data-alert class="alert-box success radius">
+			Pomodoro added to card.
+			<a href="#" class="close">&times;</a>
+		</div>
+
 		<div id="clock-display-wrapper" style="text-align: center;">
 			<div id="clock-display" class="hide-for-medium-down">Ready...</div>
 			<h1 id="clock-display-mobile" class="hide-for-large-up">Ready...</h1>
 		</div>
 
 		<div id="footer">
-			<div class="small-9 small-centered columns">
-				<div id="clock-display-mobile">Current Card: <span id="currentCard">This</span>
-
+			<div class="small-9 small-centered columns">				
+				<div class="current-card">
+					Current Card: <span id="currentCard">This</span>
 				</div>
 
 				<ul class="button-group even-3">

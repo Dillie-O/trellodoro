@@ -51,6 +51,12 @@ thead tr th
 	opacity:  .7;
 }
 
+.current-card {
+	background-color: #FFFFFF;
+	opacity:  .7;
+	color: #000000;
+}
+
 .logo
 {
 	position: fixed !important;

@@ -16,6 +16,8 @@
 
 	// Hack modal box and time display fill the screen and be centered.
 	$(document).on('opened', '[data-reveal]', function () {
+		$("#status-box").hide();
+		
 		ToggleButton('resume', false);
 		ToggleButton('pause', false);
 		ToggleButton('reset', true);
@@ -45,7 +47,7 @@
 	});
 	
 	$('#button-pomodoro').bind('click', function () {
-		AddSticker($("#cardSelect").val());
+		addSticker($("#cardSelect").val());
 	});
 	
 	// Wire up Trello functionality
@@ -60,12 +62,20 @@
 				 .text("Loading Cards...")
 				 .appendTo("#output");
 
+			var firstCard = true;
+
 			Trello.get("members/me/cards", function (cards) {
 				$cards.empty();
 				$('#cardSelect').empty();
 				
 				// Build select list with card details.
 				$.each(cards, function (ix, card) {
+					if (firstCard)
+					{
+						$("#currentCard").text(card.name);
+						firstCard = false;
+					}
+					
 					$('#cardSelect').append('<option value="' + card.id + '">' + card.name + '</option>');
 				});
 			});
@@ -110,15 +120,26 @@
 	});
 
 	$("#disconnectTrello").click(logout);
+
+	$("#cardSelect").change(function() {
+		var cardName = $("#cardSelect option:selected").text();
+
+		$("#currentCard").text(cardName);
+	});
 	
-	function AddSticker(cardId)
+	function addSticker(cardId)
 	{
 		// Offset stickers by 20 pixels to properly see amount.							
-		Trello.get("cards/" + cardId + "/stickers", function (stickers) {
-			var stickerCount = stickers.length;
-			var stickerOffSet = 20 * stickerCount;
+		Trello.get("cards/" + cardId + "/stickers",
+			function (stickers) {
+				var stickerCount = stickers.length;
+				var stickerOffSet = 20 * stickerCount;
 
-			Trello.post("cards/" + cardId + "/stickers", { image: "clock", top: 0, left: stickerOffSet, zIndex: 1 });
+				Trello.post("cards/" + cardId + "/stickers",
+								{ image: "clock", top: 0, left: stickerOffSet, zIndex: 1 },
+								function(result) {
+									 $("#status-box").show(300).delay(800).fadeOut(400);
+								});
 		});
 	}
 });

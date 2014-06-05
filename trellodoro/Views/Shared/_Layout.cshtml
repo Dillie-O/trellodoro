@@ -28,7 +28,9 @@
 
 			<section class="top-bar-section">
 				<!-- Right Nav Section -->
-				<ul class="right">										
+				<ul class="right">
+					@if(@Request.Url.AbsolutePath == "/")
+					{
 					<li class="has-dropdown">
 						<a>Account</a>
 						<ul class="dropdown">
@@ -39,16 +41,18 @@
 								<a id="connectTrello" href="#">Log In</a>
 							</li>
 						</ul>
-					</li>
+					</li>	
+					}										
+					
 
 					<li class="has-dropdown">
 						<a>Help</a>
 						<ul class="dropdown">
 							<li>
-								<a>About</a>
+								@Html.ActionLink("About", "About")
 							</li>
 							<li>
-								<a>Support</a>
+								@Html.ActionLink("Support", "Support")
 							</li>
 						</ul>
 					</li>

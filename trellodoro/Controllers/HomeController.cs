@@ -21,9 +21,9 @@ namespace trellodoro.Controllers
 			return View();
 		}
 
-		public ActionResult Contact()
+		public ActionResult Support()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Your support page.";
 
 			return View();
 		}

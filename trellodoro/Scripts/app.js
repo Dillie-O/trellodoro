@@ -112,8 +112,8 @@ function StartBreakTimer() {
 	window.clearTimeout(timerId);
 
 	timeRemaining = moment.duration({
-		seconds: 5,
-		minutes: 0,
+		seconds: 0,
+		minutes: 5,
 		hours: 0
 	});
 

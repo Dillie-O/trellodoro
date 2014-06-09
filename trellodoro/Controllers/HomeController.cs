@@ -27,5 +27,12 @@ namespace trellodoro.Controllers
 
 			return View();
 		}
+
+		public ActionResult ChangeLog()
+		{
+			ViewBag.Message = "ChangeLog";
+
+			return View();
+		}
 	}
 }

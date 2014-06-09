@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var cardList = Array();
+
+$(document).ready(function () {
 	$('#button-reveal').bind('click', function () {
 		$('#clock-modal').foundation('reveal', 'open');
 	});
@@ -53,32 +55,10 @@
 	// Wire up Trello functionality
 	var onAuthorize = function () {
 		updateLoggedIn();
-		$("#output").empty();
 
 		Trello.members.get("me", function (member) {
 			$('#trelloLegend').text("Trello (Logged in as " + member.fullName + ")");
-
-			var $cards = $("<div>")
-				 .text("Loading Cards...")
-				 .appendTo("#output");
-
-			var firstCard = true;
-
-			Trello.get("members/me/cards", function (cards) {
-				$cards.empty();
-				$('#cardSelect').empty();
-				
-				// Build select list with card details.
-				$.each(cards, function (ix, card) {
-					if (firstCard)
-					{
-						$("#currentCard").text(card.name);
-						firstCard = false;
-					}
-					
-					$('#cardSelect').append('<option value="' + card.id + '">' + card.name + '</option>');
-				});
-			});
+			buildCardList();
 		});
 	};
 
@@ -121,10 +101,28 @@
 
 	$("#disconnectTrello").click(logout);
 
+	$("#btn-refresh-cards").click(buildCardList);
+
 	$("#cardSelect").change(function() {
 		var cardName = $("#cardSelect option:selected").text();
 
 		$("#currentCard").text(cardName);
+	});
+	
+	$("#boardSelect").change(function () {
+		var boardName = $("#boardSelect option:selected").text();
+		cardList[boardName].sort();
+		
+		$('#cardSelect').empty();
+		
+		// Append "Select a card" for functionality.
+		$('#cardSelect').append('<option value="-99">Select a card...</option>');
+
+		for (var i = 0; i < cardList[boardName].length; i++) {
+			$('#cardSelect').append('<option value="' + cardList[boardName][i].id + '">' + cardList[boardName][i].name + '</option>');
+		}
+
+		$('#cardSelect').show();
 	});
 	
 	function addSticker(cardId)
@@ -140,6 +138,38 @@
 								function(result) {
 									 $("#status-box").show(300).delay(800).fadeOut(400);
 								});
+		});
+	}
+	
+	function buildCardList() {
+		var firstCard = true;
+
+		Trello.get("members/me/cards", function (cards) {
+			$('#cardSelect').empty();
+			$('#boardSelect').empty();
+
+			cardList = Array();
+
+			// Build select list with card details.
+			$.each(cards, function (ix, card) {
+				// Build multi-dimensional array of cards based on board name and then
+				// sort alphabetically.
+				Trello.get("boards/" + card.idBoard, function (board) {
+					// Append "Select a Board/Card" items for functionality.
+					if (firstCard) {
+						$('#boardSelect').append('<option value="-99">Select a board...</option>');
+						$('#cardSelect').append('<option value="-99">Select a card...</option>');
+						firstCard = false;
+					}
+
+					if (Object.keys(cardList).indexOf(board.name) == -1) {
+						cardList[board.name] = Array();
+						$('#boardSelect').append('<option value="' + board.name + '">' + board.name + '</option>');
+					}
+
+					cardList[board.name].push(card);
+				});
+			});
 		});
 	}
 });

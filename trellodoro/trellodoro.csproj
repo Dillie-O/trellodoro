@@ -134,6 +134,8 @@
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
+    <Content Include="Content\img\app_icon.png" />
+    <Content Include="Content\img\app_tile.png" />
     <Content Include="Content\img\logo-mobile.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\TomatoIcon.png" />

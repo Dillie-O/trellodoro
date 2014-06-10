@@ -121,3 +121,9 @@ function StartBreakTimer() {
 	isBreak = true;
 	timerId = setInterval(function () { DoTick(); }, 1000);
 }
+
+function ToggleTileOverlay()
+{
+	var newVisibility = (document.getElementById('TileOverlay').style.visibility == 'visible') ? 'hidden' : 'visible';
+	document.getElementById('TileOverlay').style.visibility = newVisibility;
+}

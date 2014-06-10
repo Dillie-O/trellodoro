@@ -12,6 +12,11 @@
 	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link href="~/favicon.ico" rel="icon" type="image/x-icon">
 	
+	<link rel="apple-touch-icon" href="/Content/img/app_icon.png" />
+	<link rel="apple-touch-icon-precomposed" href="/Content/img/app_icon.png" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	
 	@Styles.Render("~/Content/foundation/css")
 	@Styles.Render("~/bundles/styles/trellodoro")
 
@@ -54,6 +59,7 @@
 							<li>@Html.ActionLink("About", "About")</li>
 							<li>@Html.ActionLink("Support", "Support")</li>
 							<li>@Html.ActionLink("Change Log", "ChangeLog")</li>
+							<li><a onclick="ToggleTileOverlay()">WP8 Tile</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -66,6 +72,13 @@
 		</nav>    
 
 		@RenderBody()
+		
+		<div id="TileOverlay" onclick="ToggleTileOverlay()" style='background-color: Highlight; height: 100%; width: 100%; top: 0px; left: 0px; position: fixed; color: black; visibility: hidden'> 
+		  <img src="/Content/img/app_tile.png" width="320" height="320" /> 
+		  <div style='margin-top: 40px'> 
+		     Tap the menu bar ('...') and then select "Pin to Start" to add your start screen.
+		  </div> 
+		</div>
 
 		@Scripts.Render("~/bundles/jquery")
 		@Scripts.Render("~/bundles/foundation")

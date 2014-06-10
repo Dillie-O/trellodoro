@@ -75,3 +75,7 @@ thead tr th
     text-align: center;
     width: 100%;
 }
+
+.close-reveal-modal {
+	color: #fff !important;
+}

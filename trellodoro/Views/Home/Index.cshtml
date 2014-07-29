@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="small-12 columns small-centered">
 			<fieldset>
-				<legend id="trelloLegend">Trello</legend>
+				<legend id="trelloLegend" data-memberid="">Trello</legend>
 				<div id="loggedout">
 					<a id="connectTrelloButton" href="#" class="button radius">Connect To Trello</a>
 				</div>
@@ -11,23 +11,31 @@
 					<div class="row">
 						<div class="small-6 columns">		
 							<label>Select A Board</label>
-							<select id="boardSelect"></select>						
+							<select id="boardSelect"></select>
 						</div>
 
 						<div class="small-6 columns">
 							<label>Select A Card</label>
 							<select id="cardSelect"></select>
-						</div>	
+						</div>
 					</div>
 				
 					<div class="row">
-						<div class="small-6 columns">
-							<a id="btn-refresh-cards"class="button radius small">Refresh Cards</a>							
-						</div>
-						
-						<div class="small-6 columns">
-							<a class="button radius small" data-reveal-id="clock-modal">Launch Timer</a>
-						</div>
+						<div class="small-9 small-centered columns">
+							<ul class="button-group even-3">
+								<li>
+									<a id="button-refresh-cards"class="button radius small">Refresh Cards</a>
+								</li>
+								
+								<li>
+									<a class="button radius small" data-reveal-id="clock-modal">Launch Timer</a>
+								</li>
+								
+								<li>
+									<a class="button radius small" data-reveal-id="card-modal">New Card</a>
+								</li>
+							</ul>
+						</div>											
 					</div>					
 				</div>
 			</fieldset>
@@ -77,7 +85,7 @@
 		<div id="footer">
 			<div class="small-9 small-centered columns">				
 				<div class="current-card">
-					Current Card: <span id="currentCard">None</span>
+					Current Card: <span id="currentCard" data-cardid="">None</span>
 				</div>
 
 				<ul class="button-group even-3">
@@ -93,6 +101,56 @@
 		<a class="close-reveal-modal" style="z-index: 999;">&#215;</a>
 		<img src="~/Content/img/TomatoIcon.png" width="100" class="logo hide-for-medium-down" alt="Trellodoro Logo" />
 		<img src="~/Content/img/TomatoIcon.png" width="32" class="logo hide-for-large-up" alt="Trellodoro Logo" />
+	</div>
+	
+	<div id="card-modal" class="reveal-modal large" data-reveal>
+		<div id="card-status-box" data-alert class="alert-box success radius">
+			New card created.
+			<a href="#" class="close">&times;</a>
+		</div>		
+
+		<div class="row">
+			<h1>Create New Card</h1>
+		</div>
+		
+		<div class="row">
+			<div class="small-6 columns">		
+				<label>Select A Board</label>
+				<select id="newCardBoardSelect"></select>
+			</div>
+
+			<div class="small-6 columns">
+				<label>Select A List</label>
+				<select id="newCardListSelect"></select>
+			</div>			
+		</div>
+		
+		<div class="row">
+			<div class="small-12 columns">
+				<label>Card Name</label>
+				<input type="text" id="newCardName" name="cardName" placeholder="Enter card name..."></input>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="small-9 small-centered columns">
+				<ul class="button-group even-3">
+					<li>
+						<a id="button-create-card" class="button radius small">Create Card</a>
+					</li>	
+					
+					<li>
+						<a id="button-create-launch-card" class="button radius small">Create Card &amp; Launch Timer</a>
+					</li>
+					
+					<li>
+						<a id="button-cancel-card" class="button radius small">Cancel</a>
+					</li>
+				</ul>				
+			</div>
+		</div>
+
+		<a class="close-reveal-modal" style="z-index: 999;">&#215;</a>
 	</div>
 
 	<audio id="sound-ring" data-filename="ring.mp3" src="/Content/audio/ring.mp3"></audio>

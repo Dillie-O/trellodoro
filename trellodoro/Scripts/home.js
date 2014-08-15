@@ -213,16 +213,20 @@ $(document).ready(function () {
 			// Build select list with board details.
 			$.each(boards, function (ix, board) {
 				// Build multi-dimensional array of cards based on board name and then
-				// sort alphabetically.
-				if (firstBoard) {
-					$('#boardSelect').append('<option value="-99">Select a board...</option>');
-					$('#newCardBoardSelect').append('<option value="-99">Select a board...</option>');
-					$('#cardSelect').append('<option value="-99">Select a card...</option>');
-					firstBoard = false;
-				}
-				
-				$('#boardSelect').append('<option value="' + board.id + '">' + board.name + '</option>');
-				$('#newCardBoardSelect').append('<option value="' + board.id + '">' + board.name + '</option>');
+				// sort alphabetically. Ignore closed boards.
+				if (!board.closed)
+				{
+					if (firstBoard)
+					{
+						$('#boardSelect').append('<option value="-99">Select a board...</option>');
+						$('#newCardBoardSelect').append('<option value="-99">Select a board...</option>');
+						$('#cardSelect').append('<option value="-99">Select a card...</option>');
+						firstBoard = false;
+					}
+					
+					$('#boardSelect').append('<option value="' + board.id + '">' + board.name + '</option>');
+					$('#newCardBoardSelect').append('<option value="' + board.id + '">' + board.name + '</option>');
+				}												
 			});
 		});
 	}
